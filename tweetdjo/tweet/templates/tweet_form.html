@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %}Tweet Karo{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="card bg-dark text-light shadow-lg">
+    <div class="card-body">
+      <h2 class="text-center">📝 Tweet Karo</h2>
+      <hr class="bg-secondary">
+
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="mb-3">
+          {{ form.text.label_tag }}
+          {{ form.text }}
+          {{ form.text.errors }}
+        </div>
+
+        <div class="mb-3">
+          {{ form.photo.label_tag }}
+          {{ form.photo }}
+          {{ form.photo.errors }}
+        </div>
+
+        <button type="submit" class="btn btn-outline-success">🚀 Tweet</button>
+        <a href="{% url 'tweet_list' %}" class="btn btn-primary ms-2">← Back to Tweets</a>
+
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
